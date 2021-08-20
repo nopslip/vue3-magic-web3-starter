@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <img alt="Bloom Starter Kit Logo" src="../assets/logo.png" />
     <h1>Welcome {{ email }}</h1>
     <h3>
       Your Public Address is: <i>{{ publicAddress }}</i>
@@ -18,8 +18,4 @@ export default {
   }),
 };
 </script>
-<style scoped>
-h3 {
-  margin: 20px 0 0;
-}
-</style>
+<style scoped></style>
