@@ -1,7 +1,6 @@
 <template>
   <div
     class="
-      min-h-screen
       flex
       items-center
       justify-center
@@ -15,7 +14,7 @@
     <div class="max-w-md w-full space-y-8">
       <div>
         <img
-          class="mx-auto h-12 w-auto"
+          class="mx-auto h-20 w-auto"
           src="../assets/logo.png"
           alt="Workflow"
         />
@@ -199,7 +198,7 @@ export default {
 };
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 *,
 *::before,
 *::after {
@@ -272,5 +271,5 @@ label {
   border: 1px solid rgb(204, 204, 204);
   border-radius: 4px;
   text-align: center;
-}
+} */
 </style>
