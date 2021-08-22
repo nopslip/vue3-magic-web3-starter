@@ -1,28 +1,14 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link v-if="this.$store.state.user" to="/profile"
-        >Profile</router-link
-      >
-      <router-link v-if="!this.$store.state.user" to="/login"
-        >Login</router-link
-      >
-      <button v-else type="button" class="button" @click="logout">
-        Logout
-      </button>
-    </div>
-    <router-view />
-  </div>
+  <div id="app"></div>
+  <Navbar />
+  <router-view />
 </template>
 <script>
+import Navbar from "@/components/Navbar.vue";
+//import Home from "@/views/Home.vue";
 export default {
-  methods: {
-    logout() {
-      this.$store.dispatch("logout");
-    },
-  },
+  name: "App",
+  components: { Navbar },
 };
 </script>
 <style>
