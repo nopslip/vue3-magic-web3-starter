@@ -12,7 +12,7 @@
       <div>
         <h1 class="text-lg">{{ msg }}</h1>
       </div>
-      <div class="py4">
+      <div class="py-4">
         <router-link
           v-if="!userData.email"
           to="/login"
@@ -41,7 +41,7 @@ export default {
   name: "Home",
   computed: {
     userData() {
-      return this.$store.state.user;
+      return this.$store.state.user ? this.$store.state.user : "false";
     },
   },
   data() {

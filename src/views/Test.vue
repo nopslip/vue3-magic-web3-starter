@@ -70,32 +70,19 @@
         </div>
       </div>
       <hr />
-      <div>
-        <router-link
-          v-if="!userData"
-          to="/login"
-          class="
-            bg-transparent
-            hover:bg-green-500
-            text-green-700
-            font-semibold
-            hover:text-white
-            py-2
-            px-4
-            border border-green-500
-            hover:border-transparent
-            rounded
-          "
-          >Login</router-link
+      <div v-if="!userData.email">
+        <p>You are not currently logged in. You can</p>
+        <router-link to="/login" class="py-2 px-4 text-blue-500"
+          >login here.</router-link
         >
       </div>
-      <div class="text-left py-4">
+      <div v-if="userData.email" class="text-left py-4">
         <h3>User Email: {{ userData.email }}</h3>
         <h3 class="py-3">User Address: {{ userData.publicAddress }}</h3>
       </div>
 
       <button
-        v-if="userData"
+        v-if="userData.email"
         @click="logout"
         class="
           bg-transparent
@@ -121,7 +108,7 @@
 export default {
   computed: {
     userData() {
-      return this.$store.state.user;
+      return this.$store.state.user ? this.$store.state.user : "false";
     },
     count() {
       return this.$store.state.count;

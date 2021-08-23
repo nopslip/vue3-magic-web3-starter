@@ -115,7 +115,7 @@
     <div v-else>
       <h1 class="mb-4">You're already logged in!</h1>
       <button
-        v-if="userData"
+        v-if="userData.email"
         @click="logout"
         class="
           bg-transparent
@@ -142,7 +142,7 @@ import { LockClosedIcon } from "@heroicons/vue/solid";
 export default {
   computed: {
     userData() {
-      return this.$store.state.user;
+      return this.$store.state.user ? this.$store.state.user : "false";
     },
   },
   data() {
@@ -170,6 +170,9 @@ export default {
             console.log(err);
           }
         });
+    },
+    logout() {
+      this.$store.dispatch("logout");
     },
   },
   components: {
