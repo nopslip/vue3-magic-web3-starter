@@ -112,7 +112,7 @@
         </div>
       </form>
     </div>
-    <div v-else>
+    <div v-else class="text-center mx-auto">
       <h1 class="mb-4">You're already logged in!</h1>
       <button
         v-if="userData.email"

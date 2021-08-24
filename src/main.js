@@ -31,9 +31,9 @@ const routes = [
       import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
   },
   {
-    path: "/test",
-    name: "Test",
-    component: () => import(/* webpackChunkName: "test" */ "@/views/Test.vue"),
+    path: "/vuex",
+    name: "Vuex",
+    component: () => import(/* webpackChunkName: "test" */ "@/views/Vuex.vue"),
   },
 ];
 
@@ -43,12 +43,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const loggedIn = localStorage.getItem("user");
+  const loggedIn = JSON.parse(localStorage.getItem("vuex")).user;
 
   if (to.matched.some((record) => record.meta.requiresAuth) && !loggedIn) {
     next("/");
-  }
-  next();
+  } else next();
 });
 
 export default router;

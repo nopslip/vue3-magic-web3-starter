@@ -9,10 +9,10 @@
           alt="Bloom logo"
         />
       </div>
-      <div>
+      <div class="flex items-center justify-center">
         <h1 class="text-lg">{{ msg }}</h1>
       </div>
-      <div class="py-4">
+      <div class="flex items-center justify-center py-4">
         <router-link
           v-if="!userData.email"
           to="/login"

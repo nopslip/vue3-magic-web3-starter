@@ -71,34 +71,39 @@
       </div>
       <hr />
       <div v-if="!userData.email">
-        <p>You are not currently logged in. You can</p>
-        <router-link to="/login" class="py-2 px-4 text-blue-500"
-          >login here.</router-link
-        >
+        <p class="py-4">
+          You are not currently logged in. You can<span>
+            <router-link to="/login" class="text-blue-500">
+              login here.</router-link
+            ></span
+          >
+        </p>
       </div>
-      <div v-if="userData.email" class="text-left py-4">
+      <div v-if="userData.email" class="text-left mt-3 px-4">
         <h3>User Email: {{ userData.email }}</h3>
         <h3 class="py-3">User Address: {{ userData.publicAddress }}</h3>
       </div>
-
-      <button
-        v-if="userData.email"
-        @click="logout"
-        class="
-          bg-transparent
-          hover:bg-blue-500
-          text-blue-700
-          font-semibold
-          hover:text-white
-          py-2
-          px-4
-          border border-blue-500
-          hover:border-transparent
-          rounded
-        "
-      >
-        Logout
-      </button>
+      <hr />
+      <div class="py-4 text-center">
+        <button
+          v-if="userData.email"
+          @click="logout"
+          class="
+            bg-transparent
+            hover:bg-blue-500
+            text-blue-700
+            font-semibold
+            hover:text-white
+            py-2
+            px-4
+            border border-blue-500
+            hover:border-transparent
+            rounded
+          "
+        >
+          Logout
+        </button>
+      </div>
     </div>
 
     <div></div>
