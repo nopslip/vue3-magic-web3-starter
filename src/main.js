@@ -35,6 +35,11 @@ const routes = [
     name: "Vuex",
     component: () => import(/* webpackChunkName: "test" */ "@/views/Vuex.vue"),
   },
+  {
+    path: "/web3",
+    name: "Web3",
+    component: () => import(/* webpackChunkName: "web3" */ "@/views/Web3.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -208,6 +208,7 @@ const navigation = [
   { name: "Login", href: "/login", current: false },
   { name: "Vuex", href: "/vuex", current: false },
   { name: "Profile", href: "/profile", current: false },
+  { name: "Web3", href: "/web3", current: false },
 ];
 
 export default {
