@@ -155,6 +155,10 @@ export default {
       this.$store
         .dispatch("login", {
           email: this.email,
+          magic:
+            this.$store.state.network === "ETH"
+              ? this.$magicEth
+              : this.$magicMatic,
         })
         .then(() => {
           this.$router.push({ name: "Profile" });
@@ -172,7 +176,12 @@ export default {
         });
     },
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("logout", {
+        magic:
+          this.$store.state.network === "ETH"
+            ? this.$magicEth
+            : this.$magicMatic,
+      });
     },
   },
   components: {
