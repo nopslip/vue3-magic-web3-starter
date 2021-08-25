@@ -15,6 +15,7 @@
           <button @click="getUserBalance">Trigger Web3</button>
         </div>
         <div v-else class="py-3">
+          <h1>{{ email }}</h1>
           <h1>You need to login before you can use Web3 features</h1>
         </div>
       </div>
@@ -23,17 +24,8 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import { Magic } from "magic-sdk";
 import { ethers } from "ethers";
-
-// Setting network to Ethereum (Ropsten Testnet)
-const magicEthereum = new Magic(process.env.VUE_APP_MAGIC_KEY, {
-  network: "mainnet",
-});
-magicEthereum.network = "ethereum";
-
-// export const ethWeb3 = new Web3(magicEthereum.rpcProvider);
-const ethWeb3 = new ethers.providers.Web3Provider(magicEthereum.rpcProvider);
+// import { ethWeb3 } from "@/web3/web3.js";
 
 export default {
   computed: mapState({
@@ -43,7 +35,7 @@ export default {
   }),
   methods: {
     async getUserBalance() {
-      const balance = await ethWeb3.getBalance(this.publicAddress);
+      const balance = await this.$ethWeb3.getBalance(this.publicAddress);
       console.debug("balance: ", ethers.utils.formatEther(balance));
     },
   },

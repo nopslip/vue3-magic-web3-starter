@@ -1,8 +1,10 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import store from "./store";
+import store from "@/store";
+import { magicEthereum, magicMatic } from "@/store";
 import Home from "@/views/Home.vue";
 import "./assets/tailwind.css";
+import { ethers } from "ethers";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -61,4 +63,15 @@ const bloomApp = createApp(App);
 
 bloomApp.use(store);
 bloomApp.use(router);
+
+// create an instance of ETH Web3, add it to apps global properties 
+bloomApp.config.globalProperties.$ethWeb3 = new ethers.providers.Web3Provider(
+  magicEthereum.rpcProvider
+);
+
+// create an instance of Matic Web3, add it to apps global properties 
+bloomApp.config.globalProperties.$maticWeb3 = new ethers.providers.Web3Provider(
+  magicMatic.rpcProvider
+);
+
 bloomApp.mount("#app");

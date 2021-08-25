@@ -1,7 +1,6 @@
 import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import { Magic } from "magic-sdk";
-import { ethers } from "ethers";
 
 const m = new Magic(process.env.VUE_APP_MAGIC_KEY);
 
@@ -16,21 +15,11 @@ export const magicMatic = new Magic(process.env.VUE_APP_MAGIC_KEY, {
 });
 magicMatic.network = "matic";
 
-// export const maticWeb3 = new Web3(magicMatic.rpcProvider);
-export const maticWeb3 = new ethers.providers.Web3Provider(
-  magicMatic.rpcProvider
-);
-
 // Setting network to Ethereum (Ropsten Testnet)
 export const magicEthereum = new Magic(process.env.VUE_APP_MAGIC_KEY, {
   network: "ropsten",
 });
 magicEthereum.network = "ethereum";
-
-// export const ethWeb3 = new Web3(magicEthereum.rpcProvider);
-export const ethWeb3 = new ethers.providers.Web3Provider(
-  magicEthereum.rpcProvider
-);
 
 export default createStore({
   state: {
