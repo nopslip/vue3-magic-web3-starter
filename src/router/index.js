@@ -47,7 +47,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (!localStorage.getItem("vuex")) {
     localStorage.setItem("vuex", "{}");
-  }
+  } // this was created to squash bug where computed mapState was failing if vuex didn't exist. Probably should explore more and fix this properly.
   const loggedIn = JSON.parse(localStorage.getItem("vuex")).user;
 
   if (to.matched.some((record) => record.meta.requiresAuth) && !loggedIn) {

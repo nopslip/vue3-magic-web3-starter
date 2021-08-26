@@ -11,8 +11,9 @@
       </div>
       <div class="text-center">
         <div v-if="publicAddress" class="py-3">
-          <h1>We're logged in!</h1>
-          <button @click="getUserBalance">Trigger Web3</button>
+          <h1 class="py-3">We're logged in!</h1>
+          <button @click="getUserBalance">Log User Balance 1</button><br />
+          <button @click="getUserBalance2">Log User Balance 2</button>
         </div>
         <div v-else class="py-3">
           <h1>{{ email }}</h1>
@@ -25,7 +26,6 @@
 <script>
 import { mapState } from "vuex";
 import { ethers } from "ethers";
-// import { ethWeb3 } from "@/web3/web3.js";
 
 export default {
   computed: mapState({
@@ -34,9 +34,26 @@ export default {
     publicAddress: (state) => state.user.publicAddress,
   }),
   methods: {
+    getProvider() {
+      return this.$store.state.network === "ETH"
+        ? this.$ethWeb3
+        : this.$maticWeb3;
+    },
     async getUserBalance() {
-      const balance = await this.$ethWeb3.getBalance(this.publicAddress);
-      console.debug("balance: ", ethers.utils.formatEther(balance));
+      const balance = await this.getProvider().getBalance(this.publicAddress);
+      console.debug("balance1: ", ethers.utils.formatEther(balance));
+      return balance;
+    },
+    async getUserBalance2() {
+      const provider = this.getProvider();
+      const signer = provider.getSigner();
+      console.debug('singer: ', signer);
+      const address = await signer.getAddress();
+      const balance = ethers.utils.formatEther(
+        await provider.getBalance(address) // Balance is in wei
+      );
+      console.debug("balance2: ", balance);
+      return balance;
     },
   },
 };
