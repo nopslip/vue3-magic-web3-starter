@@ -13,7 +13,10 @@
         <div v-if="publicAddress" class="py-3">
           <h1 class="py-3">We're logged in!</h1>
           <button @click="getUserBalance">Log User Balance 1</button><br />
-          <button @click="getUserBalance2">Log User Balance 2</button>
+          <button @click="getUserBalance2">Log User Balance 2</button><br />
+          <button class="text-green-700" @click="signMessage">
+            Sign Message</button
+          ><br />
         </div>
         <div v-else class="py-3">
           <h1>{{ email }}</h1>
@@ -47,13 +50,19 @@ export default {
     async getUserBalance2() {
       const provider = this.getProvider();
       const signer = provider.getSigner();
-      console.debug('singer: ', signer);
       const address = await signer.getAddress();
       const balance = ethers.utils.formatEther(
         await provider.getBalance(address) // Balance is in wei
       );
       console.debug("balance2: ", balance);
       return balance;
+    },
+    async signMessage() {
+      const provider = this.getProvider();
+      const signer = provider.getSigner();
+      const originalMessage = "UP UP AND AWAY!";
+      const signedMessage = await signer.signMessage(originalMessage);
+      console.debug("Signed Message: ", signedMessage);
     },
   },
 };
