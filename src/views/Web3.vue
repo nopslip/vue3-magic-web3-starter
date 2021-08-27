@@ -16,14 +16,14 @@
           <div class="mb-3">
             <h1 class="py-2">Connected to: {{ network }} network</h1>
             <ChangeNetwork class="py-3"></ChangeNetwork>
-            <a 
+            <a
               v-if="network == 'ETH'"
               class="text-purple-600 font-bold"
               target="_blank"
               :href="'https://etherscan.io/address/' + publicAddress"
               >{{ publicAddress }}</a
             >
-            <a 
+            <a
               v-else
               class="text-purple-600 font-bold"
               target="_blank"
