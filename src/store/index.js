@@ -19,6 +19,7 @@ export default createStore({
     },
     bumpLastLogin: (state) => state.count++,
     clearCounter: (state) => (state.count = 0),
+    switchNetwork: (state, newNetwork) => (state.network = newNetwork),
   },
   actions: {
     async login({ commit }, params) {
@@ -29,6 +30,10 @@ export default createStore({
     async logout({ commit }, magic) {
       await magic.magic.user.logout();
       commit("CLEAR_USER_DATA");
+    },
+    changeNetwork({ commit }) {
+      const newNetwork = this.state.network == "ETH" ? "MATIC" : "ETH";
+      commit("switchNetwork", newNetwork);
     },
   },
   modules: {},

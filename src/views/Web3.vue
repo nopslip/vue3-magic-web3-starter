@@ -15,19 +15,26 @@
           <hr />
           <div class="mb-3">
             <h1 class="py-2">Connected to: {{ network }} network</h1>
-            <a
+            <ChangeNetwork class="py-3"></ChangeNetwork>
+            <a 
+              v-if="network == 'ETH'"
               class="text-purple-600 font-bold"
               target="_blank"
               :href="'https://etherscan.io/address/' + publicAddress"
               >{{ publicAddress }}</a
             >
+            <a 
+              v-else
+              class="text-purple-600 font-bold"
+              target="_blank"
+              :href="'https://polygonscan.com/address/' + publicAddress"
+              >{{ publicAddress }}</a
+            >
           </div>
           <hr />
           <GetBalance></GetBalance>
-
           <hr />
           <div class="py-3">
-
             <SignMessage></SignMessage>
             <br />
           </div>
@@ -42,10 +49,9 @@
 </template>
 <script>
 import { mapState } from "vuex";
-
-import SignMessage from "@/components/SignMessage";
-import GetBalance from "@/components/GetBalance";
-
+import SignMessage from "@/components/web3/SignMessage";
+import GetBalance from "@/components/web3/GetBalance";
+import ChangeNetwork from "@/components/web3/ChangeNetwork.vue";
 
 export default {
   name: "Web3",
@@ -55,9 +61,10 @@ export default {
     publicAddress: (state) => state.user.publicAddress,
     network: (state) => state.network,
   }),
-   components: {
+  components: {
     SignMessage,
     GetBalance,
+    ChangeNetwork,
   },
 };
 </script>

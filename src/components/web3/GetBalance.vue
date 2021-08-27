@@ -29,7 +29,7 @@
       </button>
     </div>
     <div class="py-6">
-    <span v-if="balance">Balance: {{ balance }}</span>
+      <span v-if="balance">Balance: {{ balance }}</span>
     </div>
   </div>
 </template>
