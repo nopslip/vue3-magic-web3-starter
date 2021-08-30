@@ -1,0 +1,18 @@
+[
+  {
+    "polygon": {
+      "mainnet": {
+        "name": "Matic Network",
+        "rpcUrl": "https://rpc-mainnet.maticvigil.com/",
+        "chainId": 137,
+        "blockExplorer": "https://polygonscan.com/"
+      },
+      "testnet": {
+        "name": "Mumbai",
+        "rpcUrl": "https://rpc-mumbai.matic.today",
+        "chainId": 80001,
+        "blockExplorer": "https://mumbai.polygonscan.com/"
+      }
+    }
+  }
+]

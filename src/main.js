@@ -24,7 +24,7 @@ magicMatic.network = "matic";
 const magicEthereum = new Magic(process.env.VUE_APP_MAGIC_KEY, {
   network: "ropsten",
 });
-magicEthereum.network = "ethereum";
+magicEthereum.network = "ropsten";
 
 // create an instance of Magic with Matic provider
 bloomApp.config.globalProperties.$magicMatic = magicMatic;

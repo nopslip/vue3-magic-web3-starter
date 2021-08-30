@@ -60,4 +60,12 @@ npm run lint
 ```
 
 
+### Notes
+
+Magic Instances are defined as VueJS Global Properties. As such, you can access them via the console directly with:
+```
+$vm.appContext.config.globalProperties.$magicEth
+```
+ 
+
 
